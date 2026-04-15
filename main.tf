@@ -15,3 +15,12 @@ resource "aws_instance" "Production" {
     name = "Prod_Instance"
   }
 }
+
+resource "aws_instance" "testing" {
+  count         = var.is_this_dev_env == false ? 1 : 0
+  ami           = "ami-0c7217cdde317cfec"
+  instance_type = "t2.micro"
+  tags = {
+    name = "Prod_Instance"
+  }
+}
